@@ -1,3 +1,7 @@
+"""
+This dataloader is adapter from the following repository:
+https://github.com/xapharius/pytorch-nyuv2
+"""
 
 import os
 import sys
