@@ -11,6 +11,13 @@ The goal of the project was to figure out the difference in the accuracy of sema
 
 The reference paper for this repository is linked [here]().
 
+Model outputs
+![4models](https://user-images.githubusercontent.com/59806465/207989873-6b0ea379-3948-41c8-916c-cb4f1175e46a.png)
+
+Expected outputs
+![actual](https://user-images.githubusercontent.com/59806465/207989889-04eefe63-d989-4518-834c-ef59e3a4aaab.png)
+
+
 ## Installation
 
 To setup the environment, run 
