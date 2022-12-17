@@ -11,7 +11,9 @@
 [@dhilpickle21](https://github.com/dhilpickle21)
 
 ## Project Background
-The goal of the project was to figure out the difference in the accuracy of semantic segmentation when using RGB data and RGB-D data. We used an implementation of ENet and UNet to test the differences. We trained the networks based on a combination of Dice Loss and Cross Entropy Loss. From here we calculated the accuracy of the networks by using the mean IoU (Intersection over Union) and mean pixel accuracy. 
+Image segmentation is the process by which the pixels of an image are partitioned into multiple segments based on shared characteristics that can include color, texture, and intensity. The goal of semantic image segmentation is to predict a class for every pixel in an image. Semantic image segmentation has important applications in fields such as medical imaging and autonomous vehicles.
+
+This project aimed to investigate the use of depth information in semantic image segmentation. We evaluate the performance of two network architectures, Efficient Network (ENet) and a UNet with skip connections, on the task of semantic image segmentation using both RGB and RGB-D images. Our experiments were conducted using the NYUv2 dataset. A combination of Dice Loss and Cross Entropy Loss were used to stabilize the losses. Our results demonstrate the benefits of incorporating depth information in improving the accuracy of semantic image segmentation, showing that Depth gave an improvement of up to 17% mean IoU (intersection over union) on the NYUv2 test set. We acheived our best results when allowing each network to train for 400 epochs. 
 
 The reference paper for this repository is linked [here](https://github.com/fvolcic/NYUv2-Semantic-Segmentation/blob/main/report.pdf).
 
