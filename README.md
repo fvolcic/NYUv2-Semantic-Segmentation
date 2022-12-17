@@ -33,6 +33,14 @@ Our results indicate that depth has the ability to significantly improve semanti
 
 <img src="https://user-images.githubusercontent.com/59806465/208209542-35250bb6-b105-421e-a338-8c8759100b9d.png" alt="drawing" width="400"/>
 
+## Real Time Model View 
+
+In addition to proving a number of model testing utilities, this repo also provides the ability to view your models working in real time. The python script, named real_time.py, is uses freenect to interface with an xbox kinect V1. Install freenect to your system, then run the program and watch the magic happen!
+
+Example of the model running in real time: 
+
+<img src="https://user-images.githubusercontent.com/59806465/208266247-ae83ea7d-8d33-43f9-823a-6f712f58f0cb.png" alt="drawing" width="800"/>
+
 ## Installation
 
 To setup the environment, run 
