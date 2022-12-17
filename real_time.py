@@ -6,13 +6,27 @@ import utils.utils as utils
 
 from torchvision import transforms
 from models.basic_unet import Unet
+from models.enet import enet
 
 device = torch.device("gpu" if torch.cuda.is_available() else "cpu")
 
 IMAGE_SIZE = 512
 
-MODEL = Unet(True) 
-MODEL_PTH_PATH = "models_pth_files/cpu_depth_unet_epoch_400.pth"
+DEPTH_MODEL = False
+MODEL_NAME = "enet"
+MODEL = None
+
+if MODEL_NAME == "unet":
+    MODEL = Unet(DEPTH_MODEL)
+elif MODEL_NAME == "enet":
+    MODEL = enet(3 + (1 if DEPTH_MODEL else 0), 14)
+else: 
+    raise Exception("Model name not found")
+
+if DEPTH_MODEL:
+    MODEL_PTH_PATH = f"models_pth_files/cpu_depth_{MODEL_NAME}_epoch_400.pth"
+else:
+    MODEL_PTH_PATH = f"models_pth_files/cpu_no_depth_{MODEL_NAME}_epoch_400.pth"
 
 to_tensor = transforms.ToTensor()
 resize = transforms.Resize((IMAGE_SIZE, IMAGE_SIZE), transforms.InterpolationMode.NEAREST)
@@ -105,7 +119,10 @@ def main():
         depth = get_depth().to(device)
         frame_processed = process_kinect_frame(frame)
         depth_processed = process_kinect_frame(depth)
-        model_in = torch.cat((frame_processed, depth_processed), 1).float()
+        if DEPTH_MODEL:
+            model_in = torch.cat((frame_processed, depth_processed), 1).float()
+        else:
+            model_in = frame_processed.float() 
         segmentation = predict(model, model_in)
         segmentation = segmentation_to_rgb(segmentation)
         frame = resize(frame).numpy().transpose(1, 2, 0)
