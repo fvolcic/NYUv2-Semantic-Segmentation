@@ -15,7 +15,6 @@ import requests
 import numpy as np
 import time
 import pandas as pd 
-from pycocotools.coco import COCO
 import skimage.io as io
 import matplotlib.pyplot as plt
 from pathlib import Path
@@ -203,9 +202,9 @@ class NYUv2(Dataset):
         try:
             for split in ["train", "test"]:
                 for part, transform in zip(
-                    ["rgb", "seg13", "sn", "depth"],
+                    ["rgb", "seg13", "depth"],
                     [
-                        0, 0, 0, 0
+                        0, 0, 0
                     ],
                 ):
                     path = os.path.join(self.root, f"{split}_{part}")

@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import utils.utils as utils
 #from segmentation_models_pytorch.losses import DiceLoss
-from dataloaders.NYU_loader import NYUv2
+from nyu_dataloader.NYU_loader import NYUv2
 from models.enet import enet as enet
 from models.basic_unet import Unet
 from tqdm import tqdm
@@ -31,7 +31,7 @@ scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
 train_dl = NYUv2(
     root="content/NYUv2/",
     train=True, 
-    download=False, 
+    download=True, 
     img_size=(512, 512), 
     load_rgb=True, 
     load_depth=True, 
